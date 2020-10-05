@@ -1,0 +1,31 @@
+STATIC GRAPHS
+
+
+* Karate : Wayne W Zachary. An information flow model for conflict and fission in small groups.Journalof anthropological research, 33(4):452–473, 1977.
+
+* Dolphins : David Lusseau, Karsten Schneider, Oliver J Boisseau, Patti Haase, Elisabeth Slooten, andSteve M Dawson.   The bottlenose dolphin community of doubtful sound features a largeproportion of long-lasting associations.Behavioral Ecology and Sociobiology, 54(4):396–405,2003.
+
+* Polbooks : www.orgnet.com
+
+* Football : Michelle Girvan and Mark EJ Newman. Community structure in social and biological networks.Proceedings of the national academy of sciences, 99(12):7821–7826, 2002.
+
+* Polblogs: Lada A Adamic and Natalie Glance. The political blogosphere and the 2004 us election:divided they blog. In Proceedings of the 3rd international workshop on Link discovery,pages 36–43. ACM, 2005.
+
+
+All other datasets are taken from the Stanford Network Analysis Project website page http://snap.stanford.edu/
+
+* Jure Leskovec and Andrej Krevl. SNAP Datasets: Stanford large network dataset collection.http://snap.stanford.edu/data, June 2014.
+
+_____________________________________________________________________________________________________________________________________
+
+
+DYNAMIC GRAPHS
+
+
+The primary school dataset has been slightly elaborated (we changed the format) from the one downloadable at http://www.sociopatterns.org/datasets/primary-school-temporal-network-data/
+
+* Mitigation of infectious disease at school: targeted class closure vs school closure,
+BMC Infectious Diseases 14:695 (2014)
+
+* High-Resolution Measurements of Face-to-Face Contact Patterns in a Primary School,
+PLOS ONE 6(8): e23176 (2011)

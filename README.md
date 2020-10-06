@@ -24,7 +24,11 @@ These are the basic instructions to use **CoDeBetHe** on you computer
 
 ### Installing
 
-Nothing to do, apart from unzipping the real-world graph data in the folder demonstrating the algorithm on real data experiments 
+- You can then install this toolbox by either typing (in the pkg manager)
+  '''add https://github.com/lorenzodallamico/CoDeBetHe''
+  or cloning the repo locally and typing (in the pkg manager) '''add CoDeBetHe'''
+
+- Don't forget to unzip the real-world graph data in the folder demonstrating the algorithm on real data experiments
 
 ### Required packages
 

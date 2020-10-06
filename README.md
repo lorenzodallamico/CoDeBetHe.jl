@@ -24,7 +24,7 @@ These are the basic instructions to use **CoDeBetHe** on you computer
 
 ### Installing
 
-complete...
+Nothing to do, apart from unzipping the real-world graph data in the folder demonstrating the algorithm on real data experiments 
 
 ### Required packages
 
@@ -41,5 +41,5 @@ Distributions, LinearAlgebra, DataFrames, StatsBase, IterativeSolvers, Clusterin
 
 ## License
 
-?
+This software is released under the GNU AFFERO GENERAL PUBLIC LICENSE (see included file LICENSE)
 

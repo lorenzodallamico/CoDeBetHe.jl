@@ -5,8 +5,8 @@ using Distributions, DelimitedFiles, LinearAlgebra, DataFrames, StatsBase
 ## Parameter initialization
 # These are some lines of codes to initialize the parameters of the DC-SBM
 
-n = floor(Int64,10^(3.5)) # size of the networks (number of nodes)
-k = 30 # number of clusters (k)
+n = floor(Int64,10^(3)) # size of the networks (number of nodes)
+k = 11 # number of clusters (k)
 η = 0.7 # label persistence
 T = 50 # number of time-steps
 
@@ -57,5 +57,5 @@ printstyled("\n"; color = 9)
 if cluster.overlap != "not available"
     printstyled("\nThe mean overlap obtained is: ov = ", mean(cluster.overlap); color = 9)
 end
-printstyled("\nThe modularity obtained is: mod = ", mean(cluster.modularity); color = 9)
+printstyled("\nThe mean modularity obtained is: mod = ", mean(cluster.modularity); color = 9)
 printstyled("\nThe self consistent estimate of η is: η = ", mean([(sum(cluster.ℓ[t,:] .== cluster.ℓ[t+1,:])/n-1/k)/(1-1/k) for t=1:T-1]); color = 9)

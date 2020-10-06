@@ -24,7 +24,7 @@ These are the basic instructions to use **CoDeBetHe** on you computer
 
 ### Installing
 
-- You can then install this toolbox by either typing (in the pkg manager)
+- You can install this toolbox by either typing (in the pkg manager)
   '''add https://github.com/lorenzodallamico/CoDeBetHe''
   or cloning the repo locally and typing (in the pkg manager) '''add CoDeBetHe'''
 

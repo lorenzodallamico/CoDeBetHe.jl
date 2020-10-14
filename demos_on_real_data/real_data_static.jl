@@ -1,4 +1,4 @@
-using CoDeBethe
+using CoDeBetHe
 using Distributions, DelimitedFiles, LinearAlgebra, DataFrames, StatsBase
 
 ##

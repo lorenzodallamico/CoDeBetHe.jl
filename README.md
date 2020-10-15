@@ -1,3 +1,6 @@
+[![](https://img.shields.io/badge/docs-stable-blue.svg)]()
+
+
 # CoDeBetHe
 ##### **Co**mmunity **de**tection with the **Bet**he **He**ssian 
 

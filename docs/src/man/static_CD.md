@@ -148,7 +148,7 @@ using CoDeBetHe # hide
 using Distributions, DelimitedFiles, LinearAlgebra, DataFrames, StatsBase, SparseArrays # hide
 
 
-el = convert(Array{Int64}, readdlm("/home/lorenzo/CoDeBetHe/docs/data_for_doc/polblogs.txt")) # hide
+el = convert(Array{Int64}, readdlm("https://github.com/lorenzodallamico/CoDeBetHe/tree/main/docs/data_for_doc/polblogs.txt")) # hide
 
 
 if minimum(el) == 0 # hide

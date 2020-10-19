@@ -1,4 +1,4 @@
-using Documenter, CoDeBetHe, Plots
+using Documenter, CoDeBetHe
 
 
 makedocs(

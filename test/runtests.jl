@@ -1,3 +1,5 @@
+import Pkg, Test
+
 using Test, Documenter, CoDeBetHe
 @testset "CoDeBetHe" begin
     ... # other tests & testsets

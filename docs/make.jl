@@ -1,4 +1,3 @@
-import Pkg; Pkg.add("Plots")
 using Documenter, CoDeBetHe, Plots
 
 

@@ -110,9 +110,9 @@ We will show the basic usage of the function [`dynamic_community_detection_BH`](
 using CoDeBetHe, Distributions, DelimitedFiles, LinearAlgebra, DataFrames, StatsBase, SparseArrays, Plots # hide
 
 
-edge_list = convert(Array{Int64}, readdlm("/home/lorenzo/CoDeBetHe/docs/data_for_doc/el_primary.dat")) # hide
-index = convert(Array{Int64}, readdlm("/home/lorenzo/CoDeBetHe/docs/data_for_doc/index_primary.dat")) # hide
-tt = convert(Array{Int64}, readdlm("/home/lorenzo/CoDeBetHe/docs/data_for_doc/times_primary.dat")) # hide
+edge_list = convert(Array{Int64}, readdlm("https://github.com/lorenzodallamico/CoDeBetHe/tree/main/docs/data_for_doc/el_primary.dat")) # hide
+index = convert(Array{Int64}, readdlm("https://github.com/lorenzodallamico/CoDeBetHe/tree/main/docs/data_for_doc/index_primary.dat")) # hide
+tt = convert(Array{Int64}, readdlm("https://github.com/lorenzodallamico/CoDeBetHe/tree/main/docs/data_for_doc/times_primary.dat")) # hide
 
 id = findall(index .== 1) # hide
 index = [id[i][1] for i=1:length(id)] # hide

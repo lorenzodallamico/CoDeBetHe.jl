@@ -1,6 +1,6 @@
 push!(LOAD_PATH,"../src/")
 
-using Documenter, CoDeBetHe, Plots
+using Documenter, CoDeBetHe
 
 
 makedocs(

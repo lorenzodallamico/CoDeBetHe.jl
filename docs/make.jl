@@ -6,7 +6,7 @@ using Documenter, CoDeBetHe
 makedocs(
     doctest = true,
     format = Documenter.HTML(prettyurls=!("local" in ARGS)),
-    sitename = "CoDeBetHe.jl",
+    sitename = "CoDeBetHe",
     authors = "Lorenzo Dall'Amico, Nicolas Tremblay",
     pages = [
         "CoDeBetHe" => "index.md"

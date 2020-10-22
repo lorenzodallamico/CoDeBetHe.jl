@@ -17,7 +17,5 @@ makedocs(
 )
 
 deploydocs(
-    repo = "github.com/lorenzodallamico/CoDeBetHe.jl.git",
-    target = "build",
-    push_preview = true,
+    repo = "github.com/lorenzodallamico/CoDeBetHe.jl.git"
 )

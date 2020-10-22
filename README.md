@@ -1,7 +1,7 @@
 [![](https://img.shields.io/badge/docs-stable-blue.svg)]()
 
 
-# CoDeBetHe
+# CoDeBetHe.jl
 ##### **Co**mmunity **de**tection with the **Bet**he **He**ssian 
 
 This package is an afficient implpementation of the algorithms for spectral community detection  introduced in:

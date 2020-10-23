@@ -106,7 +106,7 @@ AT = AT[1:T]
 
 We will show the basic usage of the function [`dynamic_community_detection_BH`](@ref), applied to the SocioPattern network. For a more specific use of the outputs, please refer to the documentation of [`dynamic_community_detection_BH`](@ref).
 
-```@example
+```julia
 using CoDeBetHe, Distributions, DelimitedFiles, LinearAlgebra, DataFrames, StatsBase, SparseArrays, Plots # hide
 
 

@@ -71,7 +71,7 @@ A = adjacency_matrix_DCSBM(C,c,ℓ,θ) # create the adjacency matrix of an insta
 
 The following plot shows a toy example of the output of [`adjacency_matrix_DCSBM`](@ref) on a small network with large average degree and four communities of different sizes.
 
-```@example 
+```julia
 using CoDeBetHe, LinearAlgebra, Distributions, Plots # hide
 
 n = floor(Int64,10^(2.5)) # hide

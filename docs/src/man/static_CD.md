@@ -143,7 +143,7 @@ Once we have the matrix ```A```, we can run our Algorithm for community detectio
 graphs](https://lorenzodallamico.github.io/articles/unified_20.pdf). Below you can find the basic use of this function (run on Political blogs) with the typical output of the function. For more details see the documentation of [`community_detection_optimal_BH`](@ref).
 
 
-```@example
+```julia
 using CoDeBetHe # hide
 using Distributions, DelimitedFiles, LinearAlgebra, DataFrames, StatsBase, SparseArrays # hide
 

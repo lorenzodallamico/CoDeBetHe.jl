@@ -17,8 +17,7 @@ Beyond the implementation of the algorithms for community reconstruction, the pa
 ##### Content of the package
 
 * The directory ```src``` contains the file ```CoDeBetHe.jl``` with the source codes
-* The folder ```demos_on_synthetic_data``` contains two demo files ```.jl``` that display the basic usage of the package in order to create a synthetic (static or dynamic) graph with communities and subsequently run the community detection algorithm.
-* The folder ```demos_on_real_data``` shows the use of the algorithms on real datasets, contained in ```dataset.zip``` (don't forget to unzip the datasets.zip folder before running the demos). The reference of each of the datasets is specified in the file ```dataset_reference.txt```. If you are using these datasets for research purpose, please consider to cite the authors of the corresponding dataset.
+* The folder ```datasets``` contains```dataset.zip``` (don't forget to unzip the datasets.zip folder before running the demos) with some reals datasets on which aour algortihms can be trun and ```dataset_reference.txt``` with the references of the corresponding datasts. If you are using these datasets for research purpose, please consider to cite the authors of the corresponding dataset.
 
 ## Getting Started
 

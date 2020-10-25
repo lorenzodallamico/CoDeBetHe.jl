@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Dynamic CD · CoDeBetHe.jl</title><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit">CoDeBetHe.jl</span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">CoDeBetHe</a></li><li><a class="tocitem" href="../static_CD/">Static CD</a></li><li class="is-active"><a class="tocitem" href>Dynamic CD</a><ul class="internal"><li><a class="tocitem" href="#Create-a-synthetic-graphs"><span>Create a synthetic graphs</span></a></li><li><a class="tocitem" href="#Load-a-synthetic-data-set"><span>Load a synthetic data-set</span></a></li><li><a class="tocitem" href="#Infer-the-community-structure-from-\\{A{(t)}\\}_{t-1,\\dots,T}"><span>Infer the community structure from <span>$\{A^{(t)}\}_{t = 1,\dots,T}$</span></span></a></li></ul></li><li><a class="tocitem" href="../useful_functions/">Useful functions</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Dynamic CD</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Dynamic CD</a></li></ul></nav><div class="docs-right"><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Dynamic-community-detection"><a class="docs-heading-anchor" href="#Dynamic-community-detection">Dynamic community detection</a><a id="Dynamic-community-detection-1"></a><a class="docs-heading-anchor-permalink" href="#Dynamic-community-detection" title="Permalink"></a></h1><h2 id="Create-a-synthetic-graphs"><a class="docs-heading-anchor" href="#Create-a-synthetic-graphs">Create a synthetic graphs</a><a id="Create-a-synthetic-graphs-1"></a><a class="docs-heading-anchor-permalink" href="#Create-a-synthetic-graphs" title="Permalink"></a></h2><p>The package CoDeBetHe allows to generate graphs with communities according to the dynamical degree corrected stochastic block model (D-DCSBM). </p><p>Let <span>$T$</span> be the number of different snapshots that compose the dynamical graph <span>$\{\mathcal{G}_t\}_{t=1,\dots,T}$</span>. Suppose that each graph is composed by <span>$n$</span> nodes and <span>$k$</span> communities, with label vector <span>$\bm{\ell}_t \in \{1,\dots,k\}^n$</span> and the adjacency matrix <span>$A^{(t)} \in \{0,1\}^{n\times n}$</span> for <span>$1\leq t\leq T$</span>. <br/>The label vector <span>$\bm{\ell}_{t = 1}$</span> is initialized so that <span>$\pi_a\cdot n$</span> nodes have label <span>$a$</span>. The labels are then updated for <span>$2 \leq t \leq T$</span> according to the Markov process, where <span>$\ell_{i_t}$</span> denote the label of node <span>$i$</span> at time <span>$t$</span>.</p><div>\[\ell_{i_t} = \begin{cases}
+\ell_{i_{t-1}}~{\rm w.p.}~ \eta \\
+a ~ {\rm w.p.}~ (1-\eta)\pi_a,~ a \in \{1,\dots k\}
+\end{cases}\]</div><p>Once the vector label is created, each adjacency matrix <span>$A^{(t)}$</span> is drawn independently at random according to the degree-corrected stochastic block model (see <code>Static community detection</code>. The following lines of codes allow to generate a a graph sequence according to the D-DCSBM. First we initialize the parameters of the DCSBM</p><blockquote><p>For a more precise description of the DCSBM, please refer to the <code>Static community detection</code> section.</p></blockquote><pre><code class="language-julia">using CoDeBetHe
+using Distributions, DelimitedFiles, LinearAlgebra, DataFrames, StatsBase
+
+
+## Parameter initialization
+
+n = floor(Int64,10^(3.5)) # size of the networks (number of nodes)
+k = 10 # number of clusters (k)
+η = 0.7 # label persistence
+T = 6 # number of time-steps
+
+### vector θ
+
+θ = rand(Uniform(3, 10),n).^3
+θ = θ./mean(θ)
+Φ = mean(θ.^2)
+
+### vector π
+
+var_π = 1
+π_v = abs.(rand(Normal(1/k,var_π/(2*k)),k))
+π_v = π_v/sum(π_v)
+
+### matrix C
+
+c = 8. # expected average degree
+c_out = 1.5 # expected off diagonal-elements of C
+f = 1/k # fluctuation of off diagonal elements
+C = matrix_C(c_out,c,f,π_v) # creation of the matrix C</code></pre><p>We then create the sequences <span>$\{\bm{\ell}_t\}_{t=1,\dots,T}$</span> and <span>$\{A^{(t)}\}_{t = 1,\dots,T}$</span></p><pre><code class="language-julia">AT, ℓ_T = adjacency_matrix_DDCSBM(T, C, c, η, θ, π_v)</code></pre><h2 id="Load-a-synthetic-data-set"><a class="docs-heading-anchor" href="#Load-a-synthetic-data-set">Load a synthetic data-set</a><a id="Load-a-synthetic-data-set-1"></a><a class="docs-heading-anchor-permalink" href="#Load-a-synthetic-data-set" title="Permalink"></a></h2><p>At <a href="https://github.com/lorenzodallamico/CoDeBetHe">github.com/lorenzodallamico/CoDeBetHe</a>, you can find the data-set needed to run the following example. The data are taken from the <a href="http://www.sociopatterns.org/">SocioPattern</a> project. </p><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>If using this dataset, please give reference to the followings articles:</p><ul><li>Mitigation of infectious disease at school: targeted class closure vs school closure,</li><li>High-Resolution Measurements of Face-to-Face Contact Patterns in a Primary School, PLOS ONE 6(8): e23176 (2011)</li></ul></div></div><pre><code class="language-julia"># Load the data
+
+edge_list = convert(Array{Int64}, readdlm(&quot;datasets/el_primary.dat&quot;)) # this loads the edge list
+index = convert(Array{Int64}, readdlm(&quot;datasets/index_primary.dat&quot;)) # this list is to identifies the identities corresponding to each node 
+tt = convert(Array{Int64}, readdlm(&quot;datasets/times_primary.dat&quot;)) # this loads the time at which an edges was present
+
+id = findall(index .== 1)
+index = [id[i][1] for i=1:length(id)]
+
+# Generate the temporal graph
+
+T = maximum(tt)
+n = maximum(unique(edge_list))+1
+AT = [spdiagm(0 =&gt; zeros(n)) for i=1:T]
+
+edge_list[:,1] = edge_list[:,1] .+ 1
+edge_list[:,2] = edge_list[:,2] .+ 1
+
+for t=1:T
+    idx = Array(findall(tt .== t))
+    idx = [idx[i][1] for i=1:length(idx)]
+    el = edge_list[idx,:]
+    AT[t] = sign.(sparse(el[:,1],el[:,2], ones(length(el[:,1])), n,n)) # create sparse adjacency matrix
+    AT[t] = AT[t][index,index]
+    AT[t] = AT[t] + AT[t]&#39;
+end
+
+n = length(index)
+T = findmin([sum(AT[t]) for t=1:T])[2]-2
+AT = AT[1:T]</code></pre><h2 id="Infer-the-community-structure-from-\\{A{(t)}\\}_{t-1,\\dots,T}"><a class="docs-heading-anchor" href="#Infer-the-community-structure-from-\\{A{(t)}\\}_{t-1,\\dots,T}">Infer the community structure from <span>$\{A^{(t)}\}_{t = 1,\dots,T}$</span></a><a id="Infer-the-community-structure-from-\\{A{(t)}\\}_{t-1,\\dots,T}-1"></a><a class="docs-heading-anchor-permalink" href="#Infer-the-community-structure-from-\\{A{(t)}\\}_{t-1,\\dots,T}" title="Permalink"></a></h2><p>We will show the basic usage of the function <a href="../useful_functions/#CoDeBetHe.dynamic_community_detection_BH"><code>dynamic_community_detection_BH</code></a>, applied to the SocioPattern network. For a more specific use of the outputs, please refer to the documentation of <a href="../useful_functions/#CoDeBetHe.dynamic_community_detection_BH"><code>dynamic_community_detection_BH</code></a>.</p><pre><code class="language-julia">η = 0.55 # chose the value of η
+k = 10 # set the number of communities
+
+&quot;&quot;&quot;Optional inputs&quot;&quot;&quot;
+
+approx_embedding = false # if true, uses the compressive approximate embedding.
+# Else, full computation of the eigenspace associated to the negative eigenvalues of H
+
+m = nothing # (useful only if approx_embedding == true); either set m to a nothing value,
+# and an automatic m will be estimated (usually, the larger n, the larger the required m,
+# the longer the computation) or set m to an Int64 if you want to specify the polynomial
+# order used for the approximation (as a general rule: the larger m, the more precise the
+# approximate embedding, thus the better the result, but the longer the computation time)
+
+verbose = 1; #set to 0 for no verbosity; 1 for some verbosity
+
+
+cluster = dynamic_community_detection_BH(AT, η, k; approx_embedding = approx_embedding, m = m, verbose=verbose)</code></pre><pre class="documenter-example-output">
+o Creating the dynamical Bethe Hessian matrix H (of size nT = 7986).
+
+o Computing the eigenvectors associated to all negative eigenvalues of H:
+Computing a first estimate for k_neg: found k_neg = 121 (with a polynomial approximation with a mean polynomial order of 140).
+Trying for k_neg = 121
+The computed embedding is of dimension 114.
+
+o Computing k-means for each time step</pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../static_CD/">« Static CD</a><a class="docs-footer-nextpage" href="../useful_functions/">Useful functions »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Sunday 25 October 2020 14:59">Sunday 25 October 2020</span>. Using Julia version 1.5.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

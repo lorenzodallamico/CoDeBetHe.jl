@@ -39,6 +39,10 @@ These are the basic instructions to use **CoDeBetHe** on you computer
 Distributions, LinearAlgebra, DataFrames, StatsBase, IterativeSolvers, Clustering, SparseArrays, KrylovKit, LightGraphs, DelimitedFiles, ParallelKMeans
 ```
 
+### Usage
+
+To get instructions on how to use the package CoDeBetHe, please refer to the [documentation](https://lorenzodallamico.github.io/CoDeBetHe.jl/) page. There you can find some scripts to easily use the main functions to generate synthetic static and dynamic graphs with communities, to load the datasets inside the ```datasets``` folder and run the community detection algorithms. 
+
 ## Authors
 
 [Lorenzo Dall'Amico](https://lorenzodallamico.github.io/)

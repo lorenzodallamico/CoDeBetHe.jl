@@ -10,6 +10,33 @@ This package is an afficient implpementation of the algorithms for spectral comm
 * Dall'Amico, Couillet and Tremblay - *[Community detection in sparse time-evolving graphs with a dynamical Bethe-Hessian](https://lorenzodallamico.github.io/articles/neurips_2020.pdf)* (arXiv:2006.04510)
 
 > If you make use **CoDeBetHe** please consider to cite the above references. 
+```
+@inproceedings{dall2019revisiting,
+  title={Revisiting the Bethe-Hessian: improved community detection in sparse heterogeneous graphs},
+  author={Dall'Amico, Lorenzo and Couillet, Romain and Tremblay, Nicolas},
+  booktitle={Advances in Neural Information Processing Systems},
+  pages={4039--4049},
+  year={2019}}
+```
+```
+@article{JMLR:v22:20-261,
+  author  = {Lorenzo Dall'Amico and Romain Couillet and Nicolas Tremblay},
+  title   = {A Unified Framework for Spectral Clustering in Sparse Graphs},
+  journal = {Journal of Machine Learning Research},
+  year    = {2021},
+  volume  = {22},
+  number  = {217},
+  pages   = {1-56},
+  url     = {http://jmlr.org/papers/v22/20-261.html}}
+```
+```
+@article{dall2020community,
+  title={Community detection in sparse time-evolving graphs with a dynamical Bethe-Hessian},
+  author={Dall'Amico, Lorenzo and Couillet, Romain and Tremblay, Nicolas},
+  journal={Advances in Neural Information Processing Systems},
+  volume={33},
+  year={2020}}
+```
 
 Beyond the implementation of the algorithms for community reconstruction, the package contains functions to generate synthetic graphs according to the static and dynamic degree corrected stochastic block model, as well as some real datasets.
 

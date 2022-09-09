@@ -6,8 +6,8 @@
 
 This package is an afficient implpementation of the algorithms for spectral community detection  introduced in:
 * Dall'Amico, Couillet and Tremblay - *[Revisiting the Bethe-Hessian: improved community detection in sparse heterogeneous graphs](https://lorenzodallamico.github.io/articles/BH19.pdf)* (NeurIPS 2019)
-* Dall'Amico, Couillet and Tremblay - *[A unified framework for spectral clustering in sparse graphs](https://lorenzodallamico.github.io/articles/unified_20.pdf)*  (arXiv:2003.09198)
-* Dall'Amico, Couillet and Tremblay - *[Community detection in sparse time-evolving graphs with a dynamical Bethe-Hessian](https://lorenzodallamico.github.io/articles/neurips_2020.pdf)* (arXiv:2006.04510)
+* Dall'Amico, Couillet and Tremblay - *[A unified framework for spectral clustering in sparse graphs](https://lorenzodallamico.github.io/articles/unified_20.pdf)*  (JMLR)
+* Dall'Amico, Couillet and Tremblay - *[Community detection in sparse time-evolving graphs with a dynamical Bethe-Hessian](https://lorenzodallamico.github.io/articles/neurips_2020.pdf)* (NeurIPS2020)
 
 > If you make use **CoDeBetHe** please consider to cite the above references. 
 ```

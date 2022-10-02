@@ -146,7 +146,7 @@ function adjacency_matrix_DCSBM(C::Array{Float64,2},c::Float64,ℓ::Array{Int64,
     ss3 = vcat(ss2,fs2)
 
     edge_list = hcat(fs3,ss3) # create edge list
-    edge_list = Array(unique(DataFrame(edge_list))) # remove repeated edges
+    edge_list = Array(unique(DataFrame(edge_list, :))) # remove repeated edges
     A = sparse(edge_list[:,1],edge_list[:,2], ones(length(edge_list[:,1])), n,n) # create sparse adjacency matrix
 
     return A

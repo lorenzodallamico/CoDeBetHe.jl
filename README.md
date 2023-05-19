@@ -4,12 +4,17 @@
 # CoDeBetHe.jl
 ##### **Co**mmunity **de**tection with the **Bet**he **He**ssian 
 
-This package is an afficient implpementation of the algorithms for spectral community detection  introduced in:
+This package is an afficient implementation in Julia language of the algorithms for spectral community detection  introduced in:
 * Dall'Amico, Couillet and Tremblay - *[Revisiting the Bethe-Hessian: improved community detection in sparse heterogeneous graphs](https://lorenzodallamico.github.io/articles/BH19.pdf)* (NeurIPS 2019)
 * Dall'Amico, Couillet and Tremblay - *[A unified framework for spectral clustering in sparse graphs](https://lorenzodallamico.github.io/articles/unified_20.pdf)*  (JMLR)
 * Dall'Amico, Couillet and Tremblay - *[Community detection in sparse time-evolving graphs with a dynamical Bethe-Hessian](https://lorenzodallamico.github.io/articles/neurips_2020.pdf)* (NeurIPS2020)
 
 > If you make use **CoDeBetHe** please consider to cite the above references. 
+
+## Update
+
+In the folder `python` we added two files that allow you to easily use our algorithm in Python as well. They rely on PyJulia and require that Julia is installed on your computer. Recall that the first time that you use the function, it will be particularly slow, unlike typical Python functions.
+
 ```
 @inproceedings{dall2019revisiting,
   title={Revisiting the Bethe-Hessian: improved community detection in sparse heterogeneous graphs},

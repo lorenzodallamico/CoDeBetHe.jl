@@ -1,7 +1,7 @@
 import numpy as np
 
 from julia.api import Julia
-jl = Julia(runtime="/home/lorenzo/julia-1.8.5/bin/julia", compiled_modules = False)
+jl = Julia(runtime="direcotry_to_julia/julia", compiled_modules = False)
 
 jl.eval('using Base')
 jl.eval('include("J2P.jl")')

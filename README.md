@@ -11,10 +11,6 @@ This package is an afficient implementation in Julia language of the algorithms 
 
 > If you make use **CoDeBetHe** please consider to cite the above references. 
 
-## Update
-
-In the folder `python` we added two files that allow you to easily use our algorithm in Python as well. They rely on PyJulia and require that Julia is installed on your computer. Recall that the first time that you use the function, it will be particularly slow, unlike typical Python functions.
-
 ```
 @inproceedings{dall2019revisiting,
   title={Revisiting the Bethe-Hessian: improved community detection in sparse heterogeneous graphs},
@@ -42,6 +38,11 @@ In the folder `python` we added two files that allow you to easily use our algor
   volume={33},
   year={2020}}
 ```
+
+
+## Update
+
+In the folder `python` we added two files that allow you to easily use our algorithm in Python as well. They rely on PyJulia and require that Julia is installed on your computer. Recall that the first time that you use the function, it will be particularly slow, unlike typical Python functions.
 
 Beyond the implementation of the algorithms for community reconstruction, the package contains functions to generate synthetic graphs according to the static and dynamic degree corrected stochastic block model, as well as some real datasets.
 

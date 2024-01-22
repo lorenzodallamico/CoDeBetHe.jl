@@ -44,7 +44,7 @@ This package is an afficient implementation in Julia language of the algorithms 
 
 In the folder `python` we added two files that allow you to easily use our algorithm in Python as well. They rely on PyJulia and require that Julia is installed on your computer. Recall that the first time that you use the function, it will be particularly slow, unlike typical Python functions. The main function is called in the following way
 ```python
-* Use: ℓ, k, modularity, ζ = CD_BH(A)
+Use: ℓ, k, modularity, ζ = CD_BH(A)
 
 Inputs: 
     * A (scipy sparse array): Adjacency matrix of the input graph

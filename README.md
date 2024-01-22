@@ -42,7 +42,23 @@ This package is an afficient implementation in Julia language of the algorithms 
 
 ## Update
 
-In the folder `python` we added two files that allow you to easily use our algorithm in Python as well. They rely on PyJulia and require that Julia is installed on your computer. Recall that the first time that you use the function, it will be particularly slow, unlike typical Python functions.
+In the folder `python` we added two files that allow you to easily use our algorithm in Python as well. They rely on PyJulia and require that Julia is installed on your computer. Recall that the first time that you use the function, it will be particularly slow, unlike typical Python functions. The main function is called in the following way
+```python
+* Use: ℓ, k, modularity, ζ = CD_BH(A)
+
+Inputs: 
+    * A (scipy sparse array): Adjacency matrix of the input graph
+
+Optional inputs:
+    * k (int): number of communities. If not specified (default), it will be estimated
+    * verbose (int): sets the level of verbosity of the algorithm
+
+Outputs:
+    *ℓ (array): estimated label partition
+    * k (int): number of communties
+    * modularity (float): modularity of the partition
+    * ζ (array): optimal zeta values used in the algorithm
+```
 
 Beyond the implementation of the algorithms for community reconstruction, the package contains functions to generate synthetic graphs according to the static and dynamic degree corrected stochastic block model, as well as some real datasets.
 
